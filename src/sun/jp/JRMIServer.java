@@ -1,13 +1,15 @@
 package sun.jp;
 
-import net.sun.jp.ServerTCP;
+import net.sun.jp.Server_TCP;
+
 
 public class JRMIServer {
 
 	public JRMIServer(int local_port)throws Exception {
 		// TODO Auto-generated constructor stub
-		System.out.println("be connected by JRMIClient!");
-		
+		System.out.println("start server....");
+		Server_TCP server_TCP = new Server_TCP(local_port);
+		server_TCP.setClientAccept();
 	}
 
 	/**
@@ -15,13 +17,13 @@ public class JRMIServer {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int port = 1099;
+		int port = 5000;
 		if (args.length== 1) {
 			port = Integer.parseInt(args[0]);
 		}
 		try {
 			new JRMIServer(port);
-			new ServerTCP(port);
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
